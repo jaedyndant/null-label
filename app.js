@@ -138,17 +138,15 @@ function initGSAP() {
   });
 
   // --- Release entries ---
-  gsap.utils.toArray('.release-entry').forEach((entry, i) => {
-    gsap.from(entry, {
-      scrollTrigger: {
-        trigger: entry,
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      },
-      y: 60, opacity: 0, duration: 0.8,
-      ease: 'power2.out'
+  const releaseEntries = gsap.utils.toArray('.release-entry');
+  if (releaseEntries.length) {
+    gsap.set(releaseEntries, { y: 40, opacity: 0 });
+    ScrollTrigger.batch(releaseEntries, {
+      start: 'top 92%',
+      onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', overwrite: true }),
+      onLeaveBack: batch => gsap.to(batch, { y: 40, opacity: 0, duration: 0.3, stagger: 0.05, overwrite: true })
     });
-  });
+  }
 
   // --- About spread reveals ---
   gsap.utils.toArray('.about-spread').forEach(spread => {
