@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roster — NULL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="custom-cursor"></div>
+  <div class="loader"><div class="loader__lace"></div></div>
+
+
+  <aside class="sidebar">
+    <a href="index.html" class="sidebar__logo">NULL</a>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link">Home</a>
+      <a href="about.html" class="sidebar__link">About</a>
+      <a href="roster.html" class="sidebar__link">Roster</a>
+      <a href="releases.html" class="sidebar__link">Releases</a>
+      <a href="contact.html" class="sidebar__link">Contact</a>
+    </nav>
+    <div class="sidebar__lace"><div class="lace-doily"></div></div>
+    <div class="sidebar__social">
+      <a href="#" class="sidebar__social-link">SC</a>
+      <a href="#" class="sidebar__social-link">IG</a>
+      <a href="#" class="sidebar__social-link">BC</a>
+    </div>
+  </aside>
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-logo">NULL</a>
+    <button class="mobile-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="mobile-overlay">
+    <nav class="mobile-overlay__nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="roster.html">Roster</a>
+      <a href="releases.html">Releases</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+
+  <main class="main">
+    <section class="roster-section">
+      <div class="roster-header">
+        <span class="section-label">Roster</span>
+      </div>
+      <div class="roster-panels">
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80" alt="Kessler" class="img-treated">
+          <span class="roster-panel__genre">Industrial Techno</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">Kessler</h3>
+            <p>Berlin-based producer and live act. Six releases on NULL since 2019, including the label's first full-length "Void Architecture."</p>
+            <span class="roster-panel__releases">8 Releases on NULL</span>
+          </div>
+        </div>
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80" alt="Rebekah" class="img-treated">
+          <span class="roster-panel__genre">Hard Techno</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">Rebekah</h3>
+            <p>Birmingham-born, Berlin-adopted. Known for relentless energy and precision engineering. Resident of NULL NIGHT since its inception.</p>
+            <span class="roster-panel__releases">5 Releases on NULL</span>
+          </div>
+        </div>
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80" alt="SPFDJ" class="img-treated">
+          <span class="roster-panel__genre">EBM / Wave</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">SPFDJ</h3>
+            <p>Genre-fluid selector operating between EBM, wave, and dark electro. Her NULL releases push the label into uncharted territory.</p>
+            <span class="roster-panel__releases">3 Releases on NULL</span>
+          </div>
+        </div>
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?w=600&q=80" alt="Varg" class="img-treated">
+          <span class="roster-panel__genre">Noise / Ambient</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">Varg</h3>
+            <p>Swedish producer exploring the space between noise and ambient. His NULL debut "Deep Mesh" was Boomkat's album of the week.</p>
+            <span class="roster-panel__releases">3 Releases on NULL</span>
+          </div>
+        </div>
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80" alt="Rrose" class="img-treated">
+          <span class="roster-panel__genre">Experimental Techno</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">Rrose</h3>
+            <p>Conceptual artist working with perceptual distortion and psychoacoustic phenomena. Two critically acclaimed EPs on the label.</p>
+            <span class="roster-panel__releases">2 Releases on NULL</span>
+          </div>
+        </div>
+        <div class="roster-panel">
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&q=80" alt="Phase Fatale" class="img-treated">
+          <span class="roster-panel__genre">Dark Techno</span>
+          <div class="roster-panel__info">
+            <h3 class="roster-panel__name">Phase Fatale</h3>
+            <p>Ostgut Ton affiliate bringing cinematic darkness. His NULL collaboration "Signal Decay" with Kessler became a Berghain staple.</p>
+            <span class="roster-panel__releases">3 Releases on NULL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="lace.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

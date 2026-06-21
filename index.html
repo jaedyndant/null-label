@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — NULL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="custom-cursor"></div>
+  <div class="loader"><div class="loader__lace"></div></div>
+
+
+  <!-- Sidebar Nav -->
+  <aside class="sidebar">
+    <a href="index.html" class="sidebar__logo">NULL</a>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link">Home</a>
+      <a href="about.html" class="sidebar__link">About</a>
+      <a href="roster.html" class="sidebar__link">Roster</a>
+      <a href="releases.html" class="sidebar__link">Releases</a>
+      <a href="contact.html" class="sidebar__link">Contact</a>
+    </nav>
+    <div class="sidebar__lace">
+      <div class="lace-doily"></div>
+    </div>
+    <div class="sidebar__social">
+      <a href="#" class="sidebar__social-link">SC</a>
+      <a href="#" class="sidebar__social-link">IG</a>
+      <a href="#" class="sidebar__social-link">BC</a>
+    </div>
+  </aside>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-logo">NULL</a>
+    <button class="mobile-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="mobile-overlay">
+    <nav class="mobile-overlay__nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="roster.html">Roster</a>
+      <a href="releases.html">Releases</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+
+  <main class="main">
+    <!-- Hero: Grid split — massive title left, full image right -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1 class="hero__title">NULL</h1>
+        <p class="hero__sub">Electronic Music Label &mdash; Berlin, Est. 2018</p>
+        <p class="hero__desc">An independent platform for electronic music that exists at the intersection of raw energy and meticulous craft. We release records that reshape the conversation.</p>
+      </div>
+      <div class="hero__image">
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80" alt="NULL Label — DJ booth in dark club" class="img-treated">
+        <div class="lace-frame-canvas"></div>
+      </div>
+    </section>
+
+    <!-- Lace Divider -->
+    <div class="lace-divider"></div>
+
+    <!-- Featured Releases: Asymmetric grid, large + 2 small -->
+    <section class="featured">
+      <div class="featured__header">
+        <span class="section-label">Latest Releases</span>
+        <a href="releases.html" class="section-link">View All</a>
+      </div>
+      <div class="featured__grid">
+        <div class="featured__card lace-corners" style="position:relative;">
+          <img src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=600&q=80" alt="Void Architecture — Album Art" class="img-treated">
+          <div class="featured__card-info">
+            <span class="featured__cat">NUL-024</span>
+            <h3>Void Architecture</h3>
+            <p>Kessler &mdash; 2LP / Digital</p>
+          </div>
+        </div>
+        <div class="featured__card lace-corners" style="position:relative;">
+          <img src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=600&q=80" alt="Phase Drift — Album Art" class="img-treated">
+          <div class="featured__card-info">
+            <span class="featured__cat">NUL-023</span>
+            <h3>Phase Drift</h3>
+            <p>Rebekah &mdash; 12" / Digital</p>
+          </div>
+        </div>
+        <div class="featured__card lace-corners" style="position:relative;">
+          <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80" alt="Grain Studies — Album Art" class="img-treated">
+          <div class="featured__card-info">
+            <span class="featured__cat">NUL-022</span>
+            <h3>Grain Studies</h3>
+            <p>NULL Collective &mdash; Digital</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lace Divider -->
+    <div class="lace-divider"></div>
+
+    <!-- Manifesto: Word-by-word reveal -->
+    <section class="manifesto">
+      <p class="manifesto__text">
+        <span class="word">We</span><span class="word">don't</span><span class="word">curate</span><span class="word">sounds.</span>
+        <span class="word">We</span><span class="word">protect</span><span class="word">the</span><span class="word">ones</span>
+        <span class="word">that</span><span class="word">refuse</span><span class="word">to</span><span class="word">be</span>
+        <span class="word">curated.</span>
+        <span class="word">Every</span><span class="word">release</span><span class="word">is</span><span class="word">a</span>
+        <span class="word">deliberate</span><span class="word">act</span><span class="word">of</span>
+        <span class="word" style="color: var(--accent);">refusal</span><span class="word">&mdash;</span>
+        <span class="word">against</span><span class="word">the</span><span class="word">algorithm,</span>
+        <span class="word">the</span><span class="word">trend,</span><span class="word">the</span>
+        <span class="word">comfortable</span><span class="word">consensus.</span>
+      </p>
+    </section>
+
+    <!-- Lace Divider -->
+    <div class="lace-divider"></div>
+
+    <!-- Events -->
+    <section class="events">
+      <div class="events__header">
+        <span class="section-label">Upcoming Events</span>
+      </div>
+      <div class="events__list">
+        <div class="event-card">
+          <span class="event-card__date">28 JUN</span>
+          <div class="event-card__info">
+            <h4>NULL NIGHT: Kessler, SPFDJ, Rebekah</h4>
+            <p>Tresor, Berlin</p>
+          </div>
+          <a href="#" class="event-card__link">Tickets</a>
+        </div>
+        <div class="event-card">
+          <span class="event-card__date">12 JUL</span>
+          <div class="event-card__info">
+            <h4>Concrete Memory — Album Launch</h4>
+            <p>OHM, Berlin</p>
+          </div>
+          <a href="#" class="event-card__link">RSVP</a>
+        </div>
+        <div class="event-card">
+          <span class="event-card__date">02 AUG</span>
+          <div class="event-card__info">
+            <h4>NULL x Vault Session</h4>
+            <p>about blank, Berlin</p>
+          </div>
+          <a href="#" class="event-card__link">Info</a>
+        </div>
+        <div class="event-card">
+          <span class="event-card__date">15 AUG</span>
+          <div class="event-card__info">
+            <h4>Signal Decay — Live A/V</h4>
+            <p>Berghain Kantine, Berlin</p>
+          </div>
+          <a href="#" class="event-card__link">Tickets</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lace Divider -->
+    <div class="lace-divider"></div>
+
+    <!-- Inline Footer -->
+    <footer class="inline-footer">
+      <span>&copy; 2024 NULL Label. Berlin.</span>
+      <span>Independent Electronic Music</span>
+    </footer>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="lace.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
