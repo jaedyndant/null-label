@@ -8,13 +8,101 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Decorative nature image bands */
+    .nature-band {
+      position: relative;
+      height: 40vh;
+      overflow: hidden;
+      margin: 0;
+    }
+    .nature-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.45) contrast(1.2);
+      transition: filter 0.8s;
+    }
+    .nature-band:hover img {
+      filter: grayscale(1) brightness(0.55) contrast(1.1);
+    }
+    .nature-band__lace {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Lace edge borders on nature images — top and bottom */
+    .nature-band__lace-top,
+    .nature-band__lace-bottom {
+      position: absolute;
+      left: 0; right: 0;
+      height: 24px;
+      z-index: 3;
+      overflow: hidden;
+    }
+    .nature-band__lace-top { top: 0; }
+    .nature-band__lace-bottom { bottom: 0; }
+
+    /* Smaller nature accent — inline with content */
+    .nature-accent {
+      position: relative;
+      height: 25vh;
+      overflow: hidden;
+    }
+    .nature-accent img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.4) contrast(1.2);
+    }
+
+    /* Ensure GSAP-animated elements are visible even without JS */
+    .featured__card,
+    .event-card,
+    .manifesto__text .word {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .gsap-ready .featured__card,
+    .gsap-ready .event-card {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Animated canvas section replacing founders */
+    .generative-art {
+      height: 50vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .generative-art canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .generative-art__label {
+      position: absolute;
+      bottom: 24px;
+      left: 80px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .nature-band { height: 30vh; }
+      .nature-accent { height: 20vh; }
+      .generative-art { height: 40vh; }
+      .generative-art__label { left: 20px; }
+    }
+  </style>
 </head>
-
 <body>
-
   <div class="custom-cursor"></div>
   <div class="loader"><div class="loader__lace"></div></div>
-
 
   <!-- Sidebar Nav -->
   <aside class="sidebar">
@@ -26,9 +114,7 @@
       <a href="releases.html" class="sidebar__link">Releases</a>
       <a href="contact.html" class="sidebar__link">Contact</a>
     </nav>
-    <div class="sidebar__lace">
-      <div class="lace-doily"></div>
-    </div>
+    <div class="sidebar__lace"><div class="lace-doily"></div></div>
     <div class="sidebar__social">
       <a href="#" class="sidebar__social-link">SC</a>
       <a href="#" class="sidebar__social-link">IG</a>
@@ -53,9 +139,8 @@
     </nav>
   </div>
 
-
   <main class="main">
-    <!-- Hero: Grid split — massive title left, full image right -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero__text">
         <h1 class="hero__title">NULL</h1>
@@ -68,10 +153,14 @@
       </div>
     </section>
 
-    <!-- Lace Divider -->
-    <div class="lace-divider"></div>
+    <!-- NATURE BAND 1: Misty forest -->
+    <div class="nature-band">
+      <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=1400&q=80" alt="Misty forest" loading="lazy">
+      <div class="nature-band__lace-top lace-divider"></div>
+      <div class="nature-band__lace-bottom lace-divider"></div>
+    </div>
 
-    <!-- Featured Releases: Asymmetric grid, large + 2 small -->
+    <!-- FEATURED RELEASES -->
     <section class="featured">
       <div class="featured__header">
         <span class="section-label">Latest Releases</span>
@@ -105,10 +194,10 @@
       </div>
     </section>
 
-    <!-- Lace Divider -->
+    <!-- LACE DIVIDER -->
     <div class="lace-divider"></div>
 
-    <!-- Manifesto: Word-by-word reveal -->
+    <!-- MANIFESTO -->
     <section class="manifesto">
       <p class="manifesto__text">
         <span class="word">We</span><span class="word">don't</span><span class="word">curate</span><span class="word">sounds.</span>
@@ -124,10 +213,27 @@
       </p>
     </section>
 
-    <!-- Lace Divider -->
-    <div class="lace-divider"></div>
+    <!-- NATURE BAND 2: Mountain peak -->
+    <div class="nature-band">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80" alt="Mountain peak" loading="lazy">
+      <div class="nature-band__lace-top lace-divider"></div>
+      <div class="nature-band__lace-bottom lace-divider"></div>
+    </div>
 
-    <!-- Events -->
+    <!-- GENERATIVE ART (replaces people/founders) -->
+    <div class="generative-art">
+      <canvas id="genCanvas"></canvas>
+      <span class="generative-art__label">Generative Sound Topology</span>
+    </div>
+
+    <!-- NATURE BAND 3: Forest path -->
+    <div class="nature-band" style="height: 30vh;">
+      <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=1400&q=80" alt="Forest path" loading="lazy">
+      <div class="nature-band__lace-top lace-divider"></div>
+      <div class="nature-band__lace-bottom lace-divider"></div>
+    </div>
+
+    <!-- EVENTS -->
     <section class="events">
       <div class="events__header">
         <span class="section-label">Upcoming Events</span>
@@ -144,7 +250,7 @@
         <div class="event-card">
           <span class="event-card__date">12 JUL</span>
           <div class="event-card__info">
-            <h4>Concrete Memory — Album Launch</h4>
+            <h4>Concrete Memory &mdash; Album Launch</h4>
             <p>OHM, Berlin</p>
           </div>
           <a href="#" class="event-card__link">RSVP</a>
@@ -160,7 +266,7 @@
         <div class="event-card">
           <span class="event-card__date">15 AUG</span>
           <div class="event-card__info">
-            <h4>Signal Decay — Live A/V</h4>
+            <h4>Signal Decay &mdash; Live A/V</h4>
             <p>Berghain Kantine, Berlin</p>
           </div>
           <a href="#" class="event-card__link">Tickets</a>
@@ -168,21 +274,121 @@
       </div>
     </section>
 
-    <!-- Lace Divider -->
-    <div class="lace-divider"></div>
+    <!-- NATURE BAND 4: Foggy valley -->
+    <div class="nature-band" style="height: 25vh;">
+      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&q=80" alt="Foggy valley" loading="lazy">
+      <div class="nature-band__lace-top lace-divider"></div>
+      <div class="nature-band__lace-bottom lace-divider"></div>
+    </div>
 
-    <!-- Inline Footer -->
+    <!-- INLINE FOOTER -->
     <footer class="inline-footer">
       <span>&copy; 2024 NULL Label. Berlin.</span>
       <span>Independent Electronic Music</span>
     </footer>
   </main>
 
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="lace.js"></script>
   <script src="app.js"></script>
 
+  <!-- Generative Art Canvas -->
+  <script>
+  (function() {
+    const canvas = document.getElementById('genCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [], time = 0;
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = canvas.width = rect.width;
+      h = canvas.height = rect.height;
+      particles = [];
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          size: 2 + Math.random() * 3,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
+      ctx.fillRect(0, 0, w, h);
+      time += 0.008;
+
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx + Math.sin(time + p.phase) * 0.3;
+        p.y += p.vy + Math.cos(time * 0.7 + p.phase) * 0.3;
+
+        // Wrap around
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+
+        // Draw particle as pixel square (cross-stitch style)
+        const pulse = 0.5 + 0.5 * Math.sin(time * 2 + p.phase);
+        ctx.fillStyle = `rgba(196, 43, 43, ${0.3 + pulse * 0.5})`;
+        const s = p.size;
+        // Cross pattern (like a stitch)
+        ctx.fillRect(p.x - s, p.y, s * 2, 1);
+        ctx.fillRect(p.x, p.y - s, 1, s * 2);
+        ctx.fillRect(p.x - s/2, p.y - s/2, 1, 1);
+        ctx.fillRect(p.x + s/2, p.y + s/2, 1, 1);
+        ctx.fillRect(p.x - s/2, p.y + s/2, 1, 1);
+        ctx.fillRect(p.x + s/2, p.y - s/2, 1, 1);
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.strokeStyle = `rgba(196, 43, 43, ${0.08 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw lace border on top and bottom of canvas
+      const ps = 4;
+      const borderPattern = [1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1];
+      ctx.fillStyle = 'rgba(196, 43, 43, 0.6)';
+      for (let x = 0; x < w; x += ps) {
+        const idx = Math.floor(x / ps) % borderPattern.length;
+        if (borderPattern[idx]) {
+          ctx.fillRect(x, 0, ps - 1, ps - 1);
+          ctx.fillRect(x, ps, ps - 1, ps - 1);
+          ctx.fillRect(x, h - ps * 2, ps - 1, ps - 1);
+          ctx.fillRect(x, h - ps, ps - 1, ps - 1);
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        resize();
+        draw();
+      }, 1500);
+    });
+    window.addEventListener('resize', resize);
+  })();
+  </script>
 </body>
 </html>

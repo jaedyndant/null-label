@@ -81,18 +81,15 @@ function initGSAP() {
   }
 
   // --- Featured cards stagger ---
-  gsap.utils.toArray('.featured__card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      },
-      y: 60, opacity: 0, duration: 0.8,
-      delay: i * 0.15,
-      ease: 'power2.out'
+  const cards = gsap.utils.toArray('.featured__card');
+  if (cards.length) {
+    gsap.set(cards, { y: 40, opacity: 0 });
+    ScrollTrigger.batch(cards, {
+      start: 'top 90%',
+      onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: 'power2.out', overwrite: true }),
+      onLeaveBack: batch => gsap.to(batch, { y: 40, opacity: 0, duration: 0.3, stagger: 0.05, overwrite: true })
     });
-  });
+  }
 
   // --- Manifesto word-by-word reveal ---
   const manifesto = document.querySelector('.manifesto__text');
@@ -117,18 +114,15 @@ function initGSAP() {
   }
 
   // --- Events row slide-in ---
-  gsap.utils.toArray('.event-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 90%',
-        toggleActions: 'play none none reverse'
-      },
-      x: -40, opacity: 0, duration: 0.6,
-      delay: i * 0.1,
-      ease: 'power2.out'
+  const eventCards = gsap.utils.toArray('.event-card');
+  if (eventCards.length) {
+    gsap.set(eventCards, { x: -30, opacity: 0 });
+    ScrollTrigger.batch(eventCards, {
+      start: 'top 92%',
+      onEnter: batch => gsap.to(batch, { x: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out', overwrite: true }),
+      onLeaveBack: batch => gsap.to(batch, { x: -30, opacity: 0, duration: 0.3, stagger: 0.05, overwrite: true })
     });
-  });
+  }
 
   // --- Lace divider scale-in ---
   gsap.utils.toArray('.lace-divider').forEach(div => {

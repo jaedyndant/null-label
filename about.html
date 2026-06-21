@@ -124,20 +124,11 @@
         </div>
       </section>
 
-      <!-- Spread 4: Founders -->
-      <section class="about-spread about-spread--founders">
-        <div class="founder lace-corners" style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Lukas Brandt — Co-founder" class="img-treated">
-          <h3>Lukas Brandt</h3>
-          <p>Co-founder, A&amp;R</p>
-        </div>
-        <div style="display:flex;align-items:center;">
-          <div class="lace-doily" style="transform: scale(1.5);"></div>
-        </div>
-        <div class="founder lace-corners" style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="Maren Voss — Co-founder" class="img-treated">
-          <h3>Maren Voss</h3>
-          <p>Co-founder, Operations</p>
+      <!-- Spread 4: Generative Art -->
+      <section class="about-spread about-spread--founders" style="flex-direction:column;gap:24px;justify-content:center;align-items:center;">
+        <span class="section-label">Sound Topology</span>
+        <div style="width:100%;height:60vh;position:relative;">
+          <canvas id="aboutGenCanvas" style="width:100%;height:100%;display:block;"></canvas>
         </div>
       </section>
 
@@ -149,6 +140,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="lace.js"></script>
   <script src="app.js"></script>
+  <script>
+  (function() {
+    const canvas = document.getElementById('aboutGenCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [], time = 0;
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = canvas.width = rect.width;
+      h = canvas.height = rect.height;
+      particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+          size: 2 + Math.random() * 3, phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.06)';
+      ctx.fillRect(0, 0, w, h);
+      time += 0.006;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx + Math.sin(time + p.phase) * 0.2;
+        p.y += p.vy + Math.cos(time * 0.7 + p.phase) * 0.2;
+        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+        const pulse = 0.5 + 0.5 * Math.sin(time * 2 + p.phase);
+        ctx.fillStyle = `rgba(196, 43, 43, ${0.3 + pulse * 0.5})`;
+        const s = p.size;
+        ctx.fillRect(p.x - s, p.y, s * 2, 1);
+        ctx.fillRect(p.x, p.y - s, 1, s * 2);
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 90) {
+            ctx.strokeStyle = `rgba(196, 43, 43, ${0.06 * (1 - dist / 90)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('load', () => { setTimeout(() => { resize(); draw(); }, 1500); });
+    window.addEventListener('resize', resize);
+  })();
+  </script>
 
 </body>
 </html>
